@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Window</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color: blueviolet;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container #button{
+            width: 15vh;
+            height: 8vh;
+            color: #000;
+            background-color: #fff;
+            border-radius: 10px;
+            border: none;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 2px 3px 4px black;
+        }
+        .container #button:active{
+            box-shadow: 2px 3px 4px  red;
+        }
+        .popup{
+            width: 400px;
+            background-color: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%,-50%) scale(0.1);
+            text-align: center;
+            padding: 0 30px 30px;
+            color: #000;
+            box-shadow: 2px 3px 4px black;
+            visibility: hidden;
+            transition: all 0.4s, top 0.4s;
+        }
+        .open-popup{
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%,-50%) scale(1);    
+        }
+        .popup:hover{
+            box-shadow: 2px 3px 4px green;
+        }
+        .popup img{
+            width: 150px;
+            margin-top: -50px;
+            height: 100px;
+        }
+        button[type='button']{
+            width: 90%;
+            height: 5vh;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            border: none;
+            background-color: green;
+            color: #fff;
+            margin-top: 30px;
+            box-shadow: 2px 3px 4px black;
+
+        }
+        button[type='button']:active{
+            box-shadow: 2px 3px 4px red;
+        }
+        .popup h2,p{
+            margin-top: 20px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input onclick="submit()" id="button" type="button" value="SUBMIT">
+        <div class="popup" id="popup">
+            <img src="./checkmark.png" alt="">
+            <h2>Thank you!</h2>
+            <p>Your Application has been succesfully submiitted Thanks!</p>
+            <button type="button" onclick="ok()">OK</button>
+        </div>
+    </div>
+</body>
+<script>
+    let popup = document.getElementById('popup')
+    function submit(){
+        popup.classList.add('open-popup');
+    }
+    function ok(){
+        popup.classList.remove('open-popup');
+    }
+
+</script>
+</html>
